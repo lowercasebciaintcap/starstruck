@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Click Me</title>
+
+<style>
+  body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff0f6;
+    font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', cursive;
+  }
+
+  .click-me {
+    font-size: 64px;
+    font-weight: bold;
+    color: #ff5fa2;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease;
+  }
+
+  .click-me:hover {
+    transform: scale(1.1);
+  }
+</style>
+</head>
+
+<body>
+
+<div class="click-me" onclick="playSong()">click me</div>
+
+<audio id="song" src="starstuck.mp3"></audio>
+
+<script>
+  function playSong() {
+    document.getElementById("song").play();
+  }
+</script>
+
+</body>
+</html>
