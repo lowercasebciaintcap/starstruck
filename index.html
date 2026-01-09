@@ -2,44 +2,125 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Click Me</title>
+<title>Happy Valentine’s Day 💗</title>
 
 <style>
-  body {
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fff0f6;
-    font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', cursive;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&display=swap');
 
-  .click-me {
-    font-size: 64px;
-    font-weight: bold;
-    color: #ff5fa2;
-    cursor: pointer;
-    user-select: none;
-    transition: transform 0.2s ease;
-  }
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffd1e8, #ff9ecf);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Baloo 2', cursive;
+  overflow: hidden;
+}
 
-  .click-me:hover {
-    transform: scale(1.1);
-  }
+.container {
+  text-align: center;
+  cursor: pointer;
+}
+
+/* 💗 MAIN TITLE */
+.title {
+  font-size: 64px;
+  color: #ff4f9a;
+  text-shadow: 0 8px 20px rgba(255,79,154,0.4);
+  animation: bounce 2s infinite;
+}
+
+/* 💬 CLICK ME BUBBLE */
+.hint {
+  display: inline-block;
+  margin-top: 15px;
+  background: white;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 16px;
+  color: #ff4f9a;
+  position: relative;
+  animation: float 1.8s infinite;
+}
+
+.hint::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid white;
+}
+
+/* 💌 REVEAL CONTENT */
+.reveal {
+  display: none;
+  animation: fadeIn 1s ease forwards;
+}
+
+.message {
+  font-size: 32px;
+  color: #c2185b;
+  margin-bottom: 20px;
+}
+
+/* 📸 BIG IMAGE */
+.photo {
+  width: 80vw;
+  max-width: 600px;
+  border-radius: 30px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+}
+
+/* ✨ ANIMATIONS */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 </style>
 </head>
 
 <body>
 
-<div class="click-me" onclick="playSong()">click me</div>
+<div class="container" onclick="openSurprise()">
+  <div id="start">
+    <div class="title">Happy Valentine’s Day 💗</div>
+    <div class="hint">click me</div>
+  </div>
+
+  <div class="reveal" id="reveal">
+    <div class="message">
+      hi hassnu, i love you so much!<br>
+      i hope this gives you a reason to smile! 😘
+    </div>
+    <img src="us.jpg" class="photo" alt="Us together">
+  </div>
+</div>
 
 <audio id="song" src="starstuck.mp3"></audio>
 
 <script>
-  function playSong() {
-    document.getElementById("song").play();
-  }
+function openSurprise() {
+  document.getElementById("start").style.display = "none";
+  document.getElementById("reveal").style.display = "block";
+
+  const audio = document.getElementById("song");
+  audio.play();
+}
 </script>
 
 </body>
